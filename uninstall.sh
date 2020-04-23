@@ -1,19 +1,19 @@
 #!/bin/bash
-#git@github.com:paulbhart/toggleairport.git
+#git@github.com:mikeabreu/toggleairport.git
+#forked from:git@github.com:CoolCyberBrain/toggleairport.git
+#forked from:git@github.com:paulbhart/toggleairport.git
 #originally from https://gist.github.com/albertbori/1798d88a93175b9da00b
-
-sudo rm /Library/Scripts/toggleAirport.sh
+# Unload the plist
 launchctl unload /Library/LaunchAgents/com.mine.toggleairport.plist
-sudo rm  /Library/LaunchAgents/com.mine.toggleairport.plist
-
-if [ -f "/var/tmp/prev_eth_on" ]; then
-    rm /var/tmp/prev_eth_on
-fi
-
-if [ -f "/var/tmp/prev_air_on" ]; then
-    rm /var/tmp/prev_air_on
-fi
-
-if [ -f "/var/tmp/prev_toggle_airport_run" ]; then
-    rm /var/tmp/prev_toggle_airport_run
-fi
+# Clean up files
+cleanup_files=(
+    "/Library/Scripts/toggleAirport.sh"
+    "/Library/LaunchAgents/com.mine.toggleairport.plist"
+    "/var/tmp/.toggleairport_last_runtime"
+    "/var/tmp/.toggleairport_eth_status"
+    "/var/tmp/.toggleairport_air_status"
+    "/var/tmp/.toggleairport_debug"
+)
+for cleanup_file in ${cleanup_files[@]}; do
+    [[ -e "$cleanup_file" ]] && sudo rm -vf $cleanup_file
+done
