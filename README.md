@@ -1,12 +1,17 @@
-The credit for most of the code belongs to others including https://gist.github.com/albertbori/1798d88a93175b9da00b
+Updated script for better plist watchlists, improved functionality of script.
 
-This program turns off WiFi when it detects a wired ethernet connection and turns on WiFi when the ethernet is unplugged.
+The credit for most of the original code belongs to others including:
+- https://github.com/CoolCyberBrain/toggleairport.git
+- https://github.com/paulbhart/toggleairport
+- https://gist.github.com/albertbori/1798d88a93175b9da00b
+
+This program turns off wireless when it detects a wired ethernet connection and turns on wireless when the ethernet is unplugged. It will also respect your choice if you manually turn wireless back on.
 
 ## For Catalina and later ##
 Tested on Catalina
 
 ```bash
-git clone https://github.com/CoolCyberBrain/toggleairport.git
+git clone https://github.com/mikeabreu/toggleairport
 cd toggleairport
 ./install.sh
 ```
@@ -16,18 +21,8 @@ to uninstall just do
 ./uninstall.sh
 ```
 
-## For pre Catalina ##
-(or if the Catalina version didn't work for you)
+Note: Do not run either of the scripts with sudo, if you do, notifications will not display.
+Note: You can remove the toggleairport directory after installing, it's not needed. If you want to uninstall later just clone and run uninstaller, or just manually uninstall.
 
-```bash
-git clone --branch pre_catalina https://github.com/CoolCyberBrain/toggleairport.git
-cd toggleairport
-./install.sh
-```
-
-to uninstall just do
-```bash
-./uninstall.sh
-```
-
-Do not run either of the scripts with sudo, if you do, notifications will not display.
+TODO:
+- Add logic to check if ethernet connection has Internet before dropping off wireless.
